@@ -144,7 +144,7 @@ function App() {
             </div>
             <div className="fact" data-testid="text-event-venue">
               <span className="fact-index">02 / VENUE</span>
-              <div><span className="fact-value">Vidyavardhaka College of Engineering (VVCE)</span><span className="fact-caption">Sports Complex · Mysore</span></div>
+              <div><span className="fact-value">VVCE Sports Complex</span><span className="fact-caption">Vidyavardhaka College of Engineering · Mysore</span></div>
             </div>
             <div className="fact" data-testid="text-registration-fee">
               <span className="fact-index">03 / FEE</span>
@@ -386,7 +386,7 @@ function App() {
               <p>Read before applying. Organizers will communicate important changes to participants.</p>
             </div>
             <ol className="rules-list" data-testid="list-event-rules">
-              {rules.map((rule, index) => <li key={`rule-${index + 1}`} data-testid={`text-rule-${index + 1}`}>{rule}</li>)}
+              {rules.map((rule, index) => <li key={`rule-${index + 1}`} data-testid={`text-rule-${index + 1}`}><span className="rule-text">{rule}</span></li>)}
             </ol>
           </div>
         </section>
