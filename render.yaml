@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: hacktober-vvce-static
+    runtime: static
+    branch: main
+    buildCommand: pnpm install --frozen-lockfile && PORT=10000 BASE_PATH=/ pnpm --filter @workspace/hacktober-fest run build
+    staticPublishPath: artifacts/hacktober-fest/dist/public
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
