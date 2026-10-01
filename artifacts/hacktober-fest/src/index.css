@@ -222,9 +222,9 @@
 .register-warning { display:block; margin-top:15px; color:#f7d6ad; font:10px/1.5 var(--app-font-mono); }
 .benefit-section { background:#e3d4b3; }
 .benefit-grid { display:grid; grid-template-columns:1fr 1.03fr; gap:8vw; align-items:center; }
-.fee-note { display:flex; align-items:baseline; gap:12px; margin-top:26px; color:var(--red); }
-.fee-note strong { font:700 clamp(42px,6vw,72px)/1 var(--app-font-display); letter-spacing:-.08em; }
-.fee-note span { max-width:110px; font:10px/1.5 var(--app-font-mono); text-transform:uppercase; }
+.prize-total { display:flex; align-items:baseline; gap:12px; margin-top:26px; color:var(--red); }
+.prize-total strong { font:700 clamp(42px,6vw,72px)/1 var(--app-font-display); letter-spacing:-.08em; }
+.prize-total span { max-width:110px; font:10px/1.5 var(--app-font-mono); text-transform:uppercase; }
 .benefits { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid rgba(53,16,13,.3); }
 .benefit { min-height:100px; padding:18px 15px 18px 0; border-bottom:1px solid rgba(53,16,13,.25); }
 .benefit:nth-child(even) { padding-left:18px; border-left:1px solid rgba(53,16,13,.2); }

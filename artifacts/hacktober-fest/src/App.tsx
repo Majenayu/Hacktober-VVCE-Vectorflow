@@ -23,7 +23,7 @@ const rules = [
   <>Registration does not guarantee selection. Organizers shortlist based on submitted profiles, team information, and organizer criteria.</>,
   <>Evaluation considers both teammates' LinkedIn and GitHub profiles, the team description, relevant technical/project experience, and overall suitability.</>,
   <>Shortlisted teams must complete onboarding and follow organizer instructions by <strong>10 October 2026</strong>.</>,
-  <>The fee is <strong>₹200 per team</strong>, not per person.</>,
+  <>The participation fee is collected only after shortlisting; applicants do not pay when they submit their initial registration.</>,
   <>Plagiarism, false details, impersonation, or other rule violations may result in disqualification.</>,
   <>Organizers may change procedures, challenges, schedule, or rules when needed; important changes will be communicated.</>,
 ];
@@ -220,7 +220,10 @@ function App() {
     if (!hash) return;
     const frame = window.requestAnimationFrame(() => {
       const target = document.getElementById(decodeURIComponent(hash));
-      if (target) window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY);
+      if (!target) return;
+      const topbar = document.querySelector<HTMLElement>('.topbar');
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - (topbar?.offsetHeight ?? 0) - 12;
+      window.scrollTo({ top: targetTop, behavior: 'instant' });
     });
     return () => window.cancelAnimationFrame(frame);
   }, []);
@@ -274,6 +277,7 @@ function App() {
             <div className="hero-badges">
               <span className="hero-badge" data-testid="status-eligibility">VVCE students only</span>
               <span className="hero-badge" data-testid="text-team-size">Exactly 2 per team</span>
+              <span className="hero-badge">Two registrations required</span>
               <span className="hero-badge" data-testid="text-event-date">14 October 2026</span>
             </div>
             <div className="hero-actions">
@@ -331,9 +335,9 @@ function App() {
               <span className="fact-index">02 / VENUE</span>
               <div><span className="fact-value">VVCE Sports Complex</span><span className="fact-caption">Vidyavardhaka College of Engineering · Mysore</span></div>
             </div>
-            <div className="fact" data-testid="text-registration-fee">
-              <span className="fact-index">03 / FEE</span>
-              <div><span className="fact-value">₹200</span><span className="fact-caption">Per team, not per person</span></div>
+            <div className="fact" data-testid="text-event-selection">
+              <span className="fact-index">03 / SELECTION</span>
+              <div><span className="fact-value">Shortlist first</span><span className="fact-caption">Teams are confirmed before the event</span></div>
             </div>
             <div className="fact" data-testid="text-team-eligibility">
               <span className="fact-index">04 / TEAM</span>
@@ -490,11 +494,14 @@ function App() {
             <p className="section-kicker">Registration, step by step</p>
             <h2 className="section-title" id="registration-heading">Do this<br />as a team.</h2>
             <div className="register-panel">
-              <span className="micro-label">One form per team · before 10 October 2026</span>
+              <span className="micro-label">Two required registrations · one internal form per team</span>
               <h3>Register your team</h3>
-              <p>Have both teammates' details ready. One member completes the internal Google Form on behalf of the pair.</p>
+              <p>One teammate submits the event form for both people. Then each teammate registers separately on the official Hacktoberfest website.</p>
               <a className="button button-primary" href={registrationUrl} data-testid="link-register-now">
-                Register Now <ArrowUpRight size={15} aria-hidden="true" />
+                Register Team Form <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+              <a className="button button-ghost" href={hacktoberfestUrl} target="_blank" rel="noopener noreferrer" data-testid="link-register-hacktoberfest">
+                Register on Hacktoberfest <ExternalLink size={14} aria-hidden="true" />
               </a>
               <span className="register-warning">Registration is reviewed; submission does not guarantee selection.</span>
             </div>
@@ -514,7 +521,7 @@ function App() {
             </article>
             <article className="step" data-testid="step-shortlisting">
               <h3>Shortlist &amp; onboard</h3>
-              <p>Selected teams receive confirmation and onboarding instructions. Complete the process by 10 October 2026.</p>
+              <p>Only shortlisted teams receive confirmation and onboarding instructions. After shortlisting, the <strong>₹200 fee is payable per team</strong>, not per person. Complete onboarding by 10 October 2026.</p>
             </article>
             <article className="step" data-testid="step-event-day">
               <h3>Build at VVCE</h3>
@@ -526,29 +533,29 @@ function App() {
         <section className="section-wrap benefit-section" id="rewards" aria-labelledby="rewards-heading">
           <div className="benefit-grid">
             <div>
-              <p className="section-kicker">Your team entry</p>
-              <h2 className="section-title" id="rewards-heading">₹200 gets<br />your team in.</h2>
-              <p className="intro-copy">The fee is ₹200 per team—not per person. Take part in the Hack Day and share your work with the community.</p>
-              <div className="fee-note" data-testid="text-fee-team"><strong>₹200</strong><span>per team<br />two members</span></div>
+              <p className="section-kicker">Recognition &amp; rewards</p>
+              <h2 className="section-title" id="rewards-heading">₹30,000<br />prize pool.</h2>
+              <p className="intro-copy">Compete for a ₹30,000 prize pool, plus trophies, Hack Day T-shirts, exclusive swag, and other special prizes for top teams.</p>
+              <div className="prize-total" data-testid="text-prize-pool"><strong>₹30,000</strong><span>total prize<br />pool</span></div>
             </div>
             <div className="benefits" data-testid="list-participant-benefits">
               <div className="benefit"><strong>Participation</strong><span>Join the selected teams building at the event.</span></div>
               <div className="benefit"><strong>Working-solution demo</strong><span>Opportunity to demonstrate what your team makes.</span></div>
               <div className="benefit"><strong>E-certificate</strong><span>For participants.</span></div>
               <div className="benefit"><strong>Snacks &amp; refreshments</strong><span>Provided during the event.</span></div>
-              <div className="benefit"><strong>Stickers &amp; goodies</strong><span>Event goodies for participants.</span></div>
-              <div className="benefit"><strong>Recognition</strong><span>Outstanding teams may be recognized.</span></div>
-              <div className="benefit"><strong>Prize opportunity</strong><span>Top-performing team gets the main reward.</span></div>
-              <div className="benefit"><strong>Event merchandise</strong><span>Top teams may receive exclusive swag.</span></div>
+              <div className="benefit"><strong>Trophies &amp; recognition</strong><span>Special recognition for outstanding teams.</span></div>
+              <div className="benefit"><strong>Hack Day T-shirts</strong><span>Exclusive event apparel and swag for top teams.</span></div>
+              <div className="benefit"><strong>Special prizes</strong><span>Additional prizes for standout solutions.</span></div>
+              <div className="benefit"><strong>Exclusive swag</strong><span>Stickers, event goodies, and more.</span></div>
             </div>
           </div>
           <aside className="reward-banner" data-testid="status-prizes-announcement">
             <div className="reward-copy">
-              <span className="micro-label">Recognition &amp; rewards</span>
+              <span className="micro-label">For top-performing teams</span>
               <h3>Make it. Show it. Be remembered.</h3>
-              <p>The top-performing team receives the main reward. Top teams may receive exclusive event merchandise; winning/top-team swag such as T-shirts is subject to the final reward structure. Prize pool and final distribution are to be announced.</p>
+              <p>The ₹30,000 prize pool includes awards for leading teams, with trophies, Hack Day T-shirts, exclusive swag, and other special prizes. Final prize distribution will be announced by the organizers.</p>
             </div>
-            <div className="prize-placeholder"><strong>To be<br />announced</strong><span>Prize pool &amp;<br />distribution</span></div>
+            <div className="prize-placeholder"><strong>₹30,000</strong><span>Total prize<br />pool</span></div>
           </aside>
         </section>
 
