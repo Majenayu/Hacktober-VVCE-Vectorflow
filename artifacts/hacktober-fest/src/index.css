@@ -258,11 +258,11 @@
 .contacts { background:var(--gold); }
 .contacts-head { display:flex; justify-content:space-between; gap:24px; align-items:end; }
 .contacts-head p { max-width:340px; margin:0; color:#5e4229; font-size:13px; line-height:1.65; }
-.contact-grid { display:grid; grid-template-columns:repeat(3,1fr); margin-top:44px; border-top:1px solid rgba(53,16,13,.35); border-bottom:1px solid rgba(53,16,13,.35); }
-.contact-card { padding:23px 20px 22px 0; }
-.contact-card+.contact-card { padding-left:22px; border-left:1px solid rgba(53,16,13,.25); }
-.contact-role { display:block; color:var(--red); font:10px var(--app-font-mono); text-transform:uppercase; letter-spacing:.1em; }
-.contact-name { display:block; margin-top:13px; font:700 22px var(--app-font-display); text-transform:uppercase; }
+.contact-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:13px; margin-top:38px; }
+.contact-card { min-width:0; min-height:150px; padding:20px; border:1px solid rgba(53,16,13,.25); background:rgba(255,244,219,.32); }
+.contact-role { display:block; color:var(--red); font:10px/1.5 var(--app-font-mono); text-transform:uppercase; letter-spacing:.1em; }
+.contact-name { display:block; margin-top:12px; font:700 clamp(17px,1.8vw,22px)/1.15 var(--app-font-display); text-transform:uppercase; overflow-wrap:anywhere; }
+.contact-affiliation { display:block; margin-top:8px; color:#5e4229; font-size:13px; line-height:1.5; }
 .contact-phone { display:inline-flex; align-items:center; gap:8px; margin-top:13px; color:var(--red-deep); font:500 13px var(--app-font-mono); text-decoration-thickness:1px; text-underline-offset:4px; }
 .footer { display:grid; grid-template-columns:1.1fr 1fr auto; gap:24px; align-items:center; padding:27px clamp(24px,6vw,92px); color:#e7d1ad; background:var(--red-deep); font:10px/1.6 var(--app-font-mono); }
 .footer-brand { display:flex; align-items:center; gap:11px; }
@@ -360,10 +360,9 @@
  .timeline-item::before { top:0; }
  .contacts-head { display:block; }
  .contacts-head p { margin-top:18px; }
- .contact-grid { grid-template-columns:1fr; margin-top:28px; }
- .contact-card { padding:18px 0; }
- .contact-card+.contact-card { padding-left:0; border-left:0; border-top:1px solid rgba(53,16,13,.25); }
- .contact-name { font-size:19px; }
+  .contact-grid { grid-template-columns:1fr; gap:10px; margin-top:27px; }
+  .contact-card { min-height:0; padding:18px; }
+  .contact-name { font-size:19px; }
  .footer { grid-template-columns:1fr; text-align:center; justify-items:center; padding:24px; }
  .footer-nav { justify-content:center; }
   .challenge-dialog { max-height:88dvh; }

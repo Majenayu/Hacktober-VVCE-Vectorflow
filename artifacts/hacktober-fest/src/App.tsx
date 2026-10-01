@@ -27,10 +27,22 @@ const rules = [
   <>Organizers may change procedures, challenges, schedule, or rules when needed; important changes will be communicated.</>,
 ];
 
-const coordinators = [
-  { name: 'Prem S', phone: '99801 56432', tel: '9980156432' },
-  { name: 'Priyan S', phone: '95359 59000', tel: '9535959000' },
-  { name: 'Shashank', phone: '866 064 9237', tel: '8660649237' },
+type EventContact = {
+  id: string;
+  role: string;
+  name: string;
+  affiliation?: string;
+  phone?: string;
+  tel?: string;
+};
+
+const eventContacts: EventContact[] = [
+  { id: 'patron', role: 'Patron', name: 'Dr. B. Sadashive Gowda', affiliation: 'Principal, VVCE' },
+  { id: 'convener', role: 'Convener', name: 'Dr. Adithya CR', affiliation: 'HOD, CSE (AIML)' },
+  { id: 'faculty-coordinator', role: 'Faculty Coordinator', name: 'Dr. Varshitha DN', affiliation: 'Associate Professor, CSE (AIML)' },
+  { id: 'sujan', role: 'Student Coordinator', name: 'Sujan', phone: '80884 25263', tel: '8088425263' },
+  { id: 'nagasiri', role: 'Student Coordinator', name: 'Nagasiri', phone: '79759 77430', tel: '7975977430' },
+  { id: 'chiranthan', role: 'Student Coordinator', name: 'Chiranthan', phone: '74837 18119', tel: '7483718119' },
 ];
 
 function App() {
@@ -394,19 +406,22 @@ function App() {
         <section className="section-wrap contacts" id="contact" aria-labelledby="contact-heading">
           <div className="contacts-head">
             <div>
-              <p className="section-kicker">Student coordinators</p>
-              <h2 className="section-title" id="contact-heading">Need a hand?</h2>
+              <p className="section-kicker">Event leadership</p>
+              <h2 className="section-title" id="contact-heading">Organizers &amp;<br />coordinators.</h2>
             </div>
-            <p>Questions about registration or running into an issue? Reach out to a student coordinator.</p>
+            <p>The Hack Day is supported by VVCE leadership, faculty, and student coordinators. Contact a student coordinator with questions.</p>
           </div>
           <div className="contact-grid">
-            {coordinators.map(({ name, phone, tel }) => (
-              <article className="contact-card" key={tel} data-testid={`card-coordinator-${tel}`}>
-                <span className="contact-role">Student coordinator</span>
+            {eventContacts.map(({ id, role, name, affiliation, phone, tel }) => (
+              <article className="contact-card" key={id} data-testid={`card-contact-${id}`}>
+                <span className="contact-role">{role}</span>
                 <strong className="contact-name">{name}</strong>
-                <a className="contact-phone" href={`tel:${tel}`} data-testid={`link-call-${tel}`}>
-                  <Phone size={14} aria-hidden="true" /> {phone}
-                </a>
+                {affiliation && <span className="contact-affiliation">{affiliation}</span>}
+                {phone && tel && (
+                  <a className="contact-phone" href={`tel:${tel}`} data-testid={`link-call-${tel}`}>
+                    <Phone size={14} aria-hidden="true" /> {phone}
+                  </a>
+                )}
               </article>
             ))}
           </div>
