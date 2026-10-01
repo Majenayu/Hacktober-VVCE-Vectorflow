@@ -140,12 +140,10 @@ function App() {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
         const item = entry.target as HTMLElement;
-        item.classList.add('is-visible');
-        observer.unobserve(item);
+        item.classList.toggle('is-visible', entry.isIntersecting);
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+    }, { threshold: 0.12, rootMargin: '-8% 0px -8% 0px' });
 
     items.forEach((item, index) => {
       item.style.setProperty('--reveal-index', String(index % 4));
@@ -153,7 +151,68 @@ function App() {
       observer.observe(item);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const hero = document.querySelector<HTMLElement>('.hero');
+    const pointerCards = Array.from(document.querySelectorAll<HTMLElement>('.track-card, .contact-card'));
+    let frame = 0;
+
+    const moveHeroWithPointer = (event: PointerEvent) => {
+      if (!hero || event.pointerType === 'touch') return;
+      const bounds = hero.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        hero.style.setProperty('--hero-orb-x', `${(x * 28).toFixed(1)}px`);
+        hero.style.setProperty('--hero-orb-y', `${(y * 18).toFixed(1)}px`);
+        hero.style.setProperty('--hero-poster-x', `${(x * -9).toFixed(1)}px`);
+        hero.style.setProperty('--hero-poster-y', `${(y * -6).toFixed(1)}px`);
+      });
+    };
+
+    const resetHeroPointer = () => {
+      window.cancelAnimationFrame(frame);
+      hero?.style.setProperty('--hero-orb-x', '0px');
+      hero?.style.setProperty('--hero-orb-y', '0px');
+      hero?.style.setProperty('--hero-poster-x', '0px');
+      hero?.style.setProperty('--hero-poster-y', '0px');
+    };
+
+    const removeCardListeners = pointerCards.map((card) => {
+      const moveSpotlight = (event: PointerEvent) => {
+        if (event.pointerType === 'touch') return;
+        const bounds = card.getBoundingClientRect();
+        card.style.setProperty('--card-pointer-x', `${(event.clientX - bounds.left).toFixed(1)}px`);
+        card.style.setProperty('--card-pointer-y', `${(event.clientY - bounds.top).toFixed(1)}px`);
+        card.classList.add('pointer-active');
+      };
+      const clearSpotlight = () => card.classList.remove('pointer-active');
+
+      card.addEventListener('pointermove', moveSpotlight, { passive: true });
+      card.addEventListener('pointerleave', clearSpotlight);
+      return () => {
+        card.removeEventListener('pointermove', moveSpotlight);
+        card.removeEventListener('pointerleave', clearSpotlight);
+      };
+    });
+
+    hero?.addEventListener('pointermove', moveHeroWithPointer, { passive: true });
+    hero?.addEventListener('pointerleave', resetHeroPointer);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      hero?.removeEventListener('pointermove', moveHeroWithPointer);
+      hero?.removeEventListener('pointerleave', resetHeroPointer);
+      removeCardListeners.forEach((removeListeners) => removeListeners());
+    };
   }, []);
 
   useEffect(() => {
