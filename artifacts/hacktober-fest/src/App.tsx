@@ -266,13 +266,13 @@ function App() {
       <main>
         <section className="hero" id="home" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="eyebrow hero-kicker">An official VVCE student event · Mysore</p>
+            <p className="eyebrow hero-kicker">Global Hacktoberfest · Local VVCE Hack Day · Mysore</p>
             <h1 id="hero-title">
               Hacktober<span className="fest">fest.</span>
             </h1>
             <p className="hero-title-long" data-testid="text-event-name">Hacktoberfest Hack Day Mysore × Vector Flow Club</p>
             <p className="hero-tagline">
-              Open-source collaboration. AI-assisted building. Two people, one focused day to make a useful thing.
+              Connect with the global open-source community through a local VVCE Hack Day. Build in a team of two, collaborate with AI thoughtfully, and make something useful in one focused day.
             </p>
             <div className="hero-badges">
               <span className="hero-badge" data-testid="status-eligibility">VVCE students only</span>
@@ -323,7 +323,7 @@ function App() {
               <h2 className="section-title" id="event-heading">One day.<br />Two minds.<br />A real build.</h2>
             </div>
             <p className="intro-copy">
-              <strong>Hacktoberfest Hack Day Mysore × Vector Flow Club</strong> is a hands-on event for VVCE students to collaborate, solve practical problems, and demonstrate what they can build. Pair up, work with open-source tools, and use AI-assisted development thoughtfully. Teams are reviewed and shortlisted before the event.
+              <strong>Hacktoberfest Hack Day Mysore × Vector Flow Club</strong> brings the global Hacktoberfest open-source event to Mysore as a local, in-person build day for VVCE students. Teams collaborate, solve practical problems, and demonstrate what they can build with open-source tools and thoughtful AI assistance. Teams are reviewed and shortlisted before the event.
             </p>
           </div>
           <div className="fact-ribbon" aria-label="Key event information">
@@ -373,9 +373,9 @@ function App() {
             <span>Hacktoberfest<small>Official platform registration required</small></span>
           </div>
           <div className="hacktober-copy">
-            <p className="section-kicker">Two registrations. Both required.</p>
+            <p className="section-kicker">Global Hacktoberfest · local VVCE build day</p>
             <h2 className="section-title" id="hacktober-heading">Your team signs up here.<br />Each builder signs up there.</h2>
-            <p>Hacktoberfest is the open-source initiative connected to the spirit of this Hack Day. Each teammate must independently register on the official Hacktoberfest website as well as completing your team's internal event form.</p>
+            <p>Hacktoberfest is a global open-source event with participants around the world. This local, in-person VVCE Hack Day brings that event to Mysore; on-campus participation is limited to VVCE students. Each teammate must independently register on the official Hacktoberfest website, in addition to one internal Google Form per team.</p>
             <div className="required-callout" data-testid="status-two-registrations">
               <strong>Internal team registration alone is not enough.</strong> One teammate submits one internal form for the team; both members complete their own Hacktoberfest registration.
             </div>
