@@ -46,6 +46,43 @@ const eventContacts: EventContact[] = [
   { id: 'chiranthan', role: 'Student Coordinator', name: 'Chiranthan', phone: '74837 18119', tel: '7483718119' },
 ];
 
+type DayScheduleActivity = {
+  title: string;
+  time?: string;
+};
+
+type DayScheduleEntry = {
+  id: string;
+  time: string;
+  title?: string;
+  activities?: DayScheduleActivity[];
+  highlight?: boolean;
+};
+
+const finalDaySchedule: DayScheduleEntry[] = [
+  { id: 'check-in', time: '9:00 AM – 9:30 AM', title: 'Registration and Check-in' },
+  { id: 'opening', time: '9:30 AM – 10:00 AM', title: 'Welcome and Opening Ceremony' },
+  { id: 'briefing', time: '10:00 AM – 10:30 AM', title: 'Hack Day Introduction and Briefing' },
+  { id: 'hackathon-start', time: '10:30 AM', title: 'Hackathon Starts', highlight: true },
+  { id: 'checkpoint-one', time: '12:00 PM – 1:00 PM', title: 'Checkpoint 1 – Project Development' },
+  { id: 'lunch', time: '1:00 PM – 2:00 PM', title: 'Lunch Break' },
+  { id: 'checkpoint-two', time: '2:30 PM – 4:00 PM', title: 'Checkpoint 2 – Project Development' },
+  {
+    id: 'four-pm-sessions',
+    time: '4:00 PM',
+    activities: [
+      { title: 'Refreshment and Break' },
+      { time: '4:00 PM – 4:30 PM', title: 'Judging and Project Evaluation' },
+    ],
+  },
+  {
+    id: 'winners',
+    time: '5:00 PM – 5:30 PM',
+    title: 'Winner Announcement, Prize Distribution and Ceremony',
+    highlight: true,
+  },
+];
+
 function App() {
   const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -67,6 +104,32 @@ function App() {
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [selectedChallenge]);
+
+  useEffect(() => {
+    const items = Array.from(document.querySelectorAll<HTMLElement>('[data-schedule-reveal]'));
+    if (items.length === 0) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || typeof IntersectionObserver === 'undefined') {
+      items.forEach((item) => item.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const item = entry.target as HTMLElement;
+        item.classList.add('is-visible');
+        observer.unobserve(item);
+      });
+    }, { threshold: 0.12 });
+
+    items.forEach((item, index) => {
+      item.style.setProperty('--schedule-index', String(index));
+      observer.observe(item);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const hash = window.location.hash.slice(1);
@@ -92,6 +155,7 @@ function App() {
         </a>
         <nav className={`nav-links${menuOpen ? ' nav-links-open' : ''}`} id="main-navigation" aria-label="Main navigation">
           <a href="#event" onClick={() => setMenuOpen(false)} data-testid="link-nav-event">Event</a>
+          <a href="#schedule" onClick={() => setMenuOpen(false)} data-testid="link-nav-schedule">Schedule</a>
           <a href="#challenges" onClick={() => setMenuOpen(false)} data-testid="link-nav-challenges">Challenges</a>
           <a href="#selection" onClick={() => setMenuOpen(false)} data-testid="link-nav-selection">Selection</a>
           <a href="#registration" onClick={() => setMenuOpen(false)} data-testid="link-nav-registration">Registration</a>
@@ -415,6 +479,47 @@ function App() {
           </div>
         </section>
 
+        <section className="section-wrap day-schedule-section" id="schedule" aria-labelledby="day-schedule-heading">
+          <div className="schedule-heading">
+            <div>
+              <p className="section-kicker">Hack Day · 14 October 2026</p>
+              <h2 className="section-title" id="day-schedule-heading">The day,<br />hour by hour.</h2>
+            </div>
+            <p className="schedule-intro">
+              <strong>VVCE Sports Complex</strong><br />
+              Vidyavardhaka College of Engineering · Mysore
+            </p>
+          </div>
+          <ol className="day-schedule-list" data-testid="list-final-day-schedule">
+            {finalDaySchedule.map((entry) => (
+              <li
+                className={`day-schedule-item${entry.highlight ? ' day-schedule-item-highlight' : ''}`}
+                key={entry.id}
+                data-testid={`schedule-${entry.id}`}
+                data-schedule-reveal
+              >
+                <time className="day-schedule-time">{entry.time}</time>
+                <div className="day-schedule-details">
+                  {entry.title && <h3>{entry.title}</h3>}
+                  {entry.activities && (
+                    <>
+                      <span className="schedule-concurrent-label">Concurrent activities · both begin at 4:00 PM</span>
+                      <div className="schedule-parallel">
+                        {entry.activities.map((activity) => (
+                          <article className="schedule-parallel-item" key={activity.title}>
+                            {activity.time && <time className="schedule-activity-time">{activity.time}</time>}
+                            <h3>{activity.title}</h3>
+                          </article>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
         <section className="section-wrap" id="rules" aria-labelledby="rules-heading">
           <div className="rules-layout">
             <div className="rules-intro">
@@ -460,6 +565,7 @@ function App() {
         </div>
         <nav className="footer-nav" aria-label="Footer navigation">
           <a href="#challenges" data-testid="link-footer-challenges">Challenges</a>
+          <a href="#schedule" data-testid="link-footer-schedule">Day schedule</a>
           <a href="#selection" data-testid="link-footer-selection">Selection</a>
           <a href="#registration" data-testid="link-footer-registration">Registration</a>
           <a href="#rewards" data-testid="link-footer-rewards">Rewards</a>
