@@ -106,7 +106,31 @@ function App() {
   }, [selectedChallenge]);
 
   useEffect(() => {
-    const items = Array.from(document.querySelectorAll<HTMLElement>('[data-schedule-reveal]'));
+    const items = Array.from(document.querySelectorAll<HTMLElement>([
+      '.intro-grid > *',
+      '.fact',
+      '.eligibility-note',
+      '.about-layout > *',
+      '.hacktober-mark',
+      '.hacktober-copy',
+      '.challenge-head > *',
+      '.track-card',
+      '.event-wide-challenge',
+      '.selection-grid > :first-child',
+      '.round',
+      '.register-side',
+      '.step',
+      '.benefit-grid > :first-child',
+      '.benefit',
+      '.reward-banner',
+      '.timeline-item',
+      '.schedule-heading > *',
+      '.day-schedule-item',
+      '.rules-intro',
+      '.rules-list li',
+      '.contacts-head > *',
+      '.contact-card',
+    ].join(', ')));
     if (items.length === 0) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || typeof IntersectionObserver === 'undefined') {
@@ -121,10 +145,11 @@ function App() {
         item.classList.add('is-visible');
         observer.unobserve(item);
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
 
     items.forEach((item, index) => {
-      item.style.setProperty('--schedule-index', String(index));
+      item.style.setProperty('--reveal-index', String(index % 4));
+      item.classList.add('reveal-item');
       observer.observe(item);
     });
 
