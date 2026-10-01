@@ -1,0 +1,223 @@
+Create a complete, professional event website for **“Hacktoberfest Hack Day Mysore × Vector Flow Club”**, hosted by **Vector Flow Club, Vidyavardhaka College of Engineering (VVCE), Mysore**. The website should serve as the official information and registration portal for the event and clearly communicate the event concept, eligibility, challenges, selection process, registration procedure, rules, rewards, schedule, and coordinator contact information. The event is **exclusively for VVCE students**, and participants can form teams across different branches, with exactly **2 participants per team**.
+
+### 1. Header / Hero Section
+The website should begin with a strong event header containing:
+- VVCE college logo
+- Relevant department/club logo
+- Hacktoberfest logo
+- Event name: **Hacktoberfest Hack Day Mysore × Vector Flow Club**
+- A concise tagline highlighting open-source collaboration, AI-assisted development, innovation, and teamwork.
+- Event date: **14 October 2026**
+- Clear indication that the event is **exclusive to VVCE students**
+- Primary CTA: **Register Your Team**
+- Secondary CTA: **Explore Challenges**
+
+The hero section should immediately communicate that this is a competitive, team-based hackathon experience conducted in collaboration with Hacktoberfest and organized by Vector Flow Club.
+
+### 2. About the Hackathon
+Create a dedicated section explaining what the event is about. Describe it as a hands-on hackathon where VVCE students work in teams of two to solve practical problems, build innovative solutions, and demonstrate their technical skills. Emphasize collaboration, creativity, problem-solving, open-source contribution, and the effective use of modern development tools.
+
+Clearly mention:
+- Participation is restricted to VVCE students.
+- Teams must contain exactly 2 participants.
+- Participants may form teams consisting of students from different branches.
+- The event will follow a selection/shortlisting process before final participation.
+- The main event will take place on **14 October 2026**.
+
+### 3. Hacktoberfest Integration
+Include a dedicated section introducing **Hacktoberfest** and explaining its relevance to the event. Display the official Hacktoberfest branding/logo appropriately and explain that participation requires both team registration for this event and individual registration on the official Hacktoberfest platform.
+
+Clearly state that:
+- Both members of every team must independently register for the official Hacktoberfest event.
+- Completing only the internal team registration is not sufficient.
+- Hacktoberfest registration is mandatory for both participants.
+
+### 4. Domains & Challenges
+Create an interactive **Domains & Challenges** section where participants can explore the different technical domains available for the hackathon.
+
+Display each domain as a clickable card. When a participant clicks a domain/problem statement, show:
+- Problem statement title
+- Detailed problem description
+- Expected outcome
+- Key requirements
+- Suggested technologies/tools, if applicable
+- Important constraints
+- Expected type of solution/prototype
+- Any additional challenge-specific information
+
+The challenge section should be designed so that new domains or problem statements can easily be added or modified later without restructuring the entire website.
+
+### 5. Hackathon Rounds / Selection Process
+Clearly explain the complete journey from registration to participation.
+
+#### Round 1 — Team Registration & Evaluation
+Every interested participant must form a team of exactly two members and complete the registration process.
+
+The team will be evaluated based on:
+- LinkedIn profiles of both participants
+- GitHub profiles of both participants
+- The team's submitted description
+- Relevant technical/project experience
+- Overall suitability for the hackathon
+
+The website should clearly explain that registration does not automatically guarantee participation. Teams will be reviewed and shortlisted after the registration period.
+
+#### Round 2 — Shortlisting & Onboarding
+After evaluation, selected teams will be shortlisted for the final event.
+
+Shortlisted teams will:
+- Receive confirmation of selection
+- Be officially onboarded
+- Receive the necessary event information/instructions
+- Secure their place in the physical event
+
+All registration, evaluation, shortlisting, and onboarding activities should be completed by **10 October 2026**.
+
+### 6. Event Details
+Create a dedicated event-information section containing:
+- **Event:** Hacktoberfest Hack Day Mysore × Vector Flow Club
+- **Date:** 14 October 2026
+- **Location:** Vidyavardhaka College of Engineering, Mysore
+- **Eligibility:** VVCE students only
+- **Team size:** Exactly 2 participants
+- **Team formation:** Inter-branch teams are allowed
+- **Entry fee:** ₹200 per team
+
+Clearly distinguish the registration/selection deadline from the actual hackathon date.
+
+### 7. Registration Process
+Create a simple step-by-step registration section explaining exactly how participants should register.
+
+#### Step 1 — Internal Team Registration
+One teammate should complete the official event Google Form on behalf of the team.
+
+The Google Form should collect the required information about both participants, including relevant personal, academic, LinkedIn, GitHub, and team information.
+
+#### Step 2 — Hacktoberfest Registration
+Both participants must independently register for the official Hacktoberfest event/platform.
+
+Clearly emphasize:
+
+**One Google Form submission per team, but both teammates must individually complete Hacktoberfest registration.**
+
+#### Step 3 — Selection
+The organizing team evaluates submitted applications using the provided LinkedIn profiles, GitHub profiles, and team description.
+
+#### Step 4 — Shortlisting
+Selected teams are notified and onboarded before the final deadline of **10 October 2026**.
+
+#### Step 5 — Event Participation
+Shortlisted teams attend the Hacktoberfest Hack Day Mysore × Vector Flow Club event on **14 October 2026**.
+
+Include a prominent **Register Now** button that directs participants to the official Google Form.
+
+### 8. Entry Fee & Participant Benefits
+Create a section clearly explaining what participants receive for the ₹200 team entry fee.
+
+Participants should receive:
+- Participation in the hackathon
+- E-certificate for participants
+- Snacks/refreshments
+- Hacktoberfest/event goodies such as stickers
+- Opportunity to build and demonstrate a working solution
+- Recognition for outstanding teams
+- Opportunity to win prizes and exclusive merchandise
+
+Clearly mention that the **entry fee is ₹200 per team**, not per participant.
+
+### 9. Prize Pool & Rewards
+Create an attractive rewards section highlighting the prize pool.
+
+Include placeholders that can be updated with the final prize-pool amount and detailed prize distribution.
+
+Clearly mention that:
+- The top-performing team will receive the main prize/reward.
+- Top teams may receive exclusive event merchandise.
+- The winning/top team will receive **exclusive Hack Day/Vector Flow swag such as T-shirts**, subject to the final reward structure.
+- Additional recognition/certificates may be provided where applicable.
+
+The prize section should visually stand out from the rest of the website.
+
+### 10. Rules & Regulations
+Create a dedicated **Rules & Regulations** section containing all important participation rules.
+
+Include at minimum:
+- Participation is strictly limited to VVCE students.
+- Each team must consist of exactly 2 participants.
+- Inter-branch teams are permitted.
+- Both team members must independently register for Hacktoberfest.
+- One teammate submits the internal Google Form for the entire team.
+- Registration does not guarantee selection.
+- Selection will be based on the information submitted during registration and evaluation criteria defined by the organizers.
+- Selected teams must complete the onboarding requirements within the specified timeline.
+- The ₹200 entry fee is charged per team.
+- Participants must follow the instructions provided by the organizers.
+- Any form of plagiarism, fraudulent information, impersonation, or violation of event rules may result in disqualification.
+- Organizers reserve the right to modify event procedures, challenges, schedules, or rules when necessary and will communicate important changes to participants.
+
+### 11. Important Timeline
+Create a visual timeline showing the complete event journey:
+
+**Registration Opens → Team Application → Evaluation → Shortlisting → Onboarding → Final Event**
+
+Important dates:
+- **Registration & application:** Before 10 October 2026
+- **Evaluation & shortlisting:** Completed by 10 October 2026
+- **Selected-team onboarding:** Completed by 10 October 2026
+- **Hackathon:** 14 October 2026
+
+The timeline should make it immediately clear what participants need to do and when they need to do it.
+
+### 12. Student Coordinators
+Add a dedicated **Contact / Student Coordinators** section at the bottom of the website.
+
+For each coordinator, display:
+- Name
+- Position/role
+- Phone number
+- Optional email address
+- Optional WhatsApp contact button
+
+Provide a clear message such as:
+
+**“Have questions or facing issues during registration? Contact our student coordinators.”**
+
+Use the actual coordinator names and phone numbers provided by the organizers. Do not invent any contact information.
+
+### 13. Footer
+The footer should contain:
+- VVCE logo
+- Vector Flow Club identity
+- Hacktoberfest branding
+- Event name
+- Event date
+- Quick navigation links
+- Registration link
+- Challenge/problem statement link
+- Rules & Regulations
+- Contact information
+- Relevant social media links
+- Copyright information
+
+### 14. Information Architecture
+The website should have a clear structure that allows participants to quickly find important information.
+
+Recommended navigation:
+
+**Home | About | Hacktoberfest | Domains & Challenges | Rounds | Registration | Rewards | Rules | Contact**
+
+The most important CTA throughout the website should be **Register Your Team**.
+
+The website must prioritize clarity because participants should be able to understand:
+1. What the event is.
+2. Who can participate.
+3. How teams are formed.
+4. How selection works.
+5. What they need to submit.
+6. How Hacktoberfest registration works.
+7. How much the event costs.
+8. What they receive.
+9. When the important deadlines are.
+10. How to contact organizers.
+
+The final website content should feel like an **official college-level hackathon portal**, not a generic event landing page. The information hierarchy should make the registration process, selection process, challenge details, rules, deadlines, and participant benefits immediately understandable.
