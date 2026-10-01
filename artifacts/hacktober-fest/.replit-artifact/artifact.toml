@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Hacktober Fest"
+description = "A static event website for Hacktober, the global-level hackathon hosted by the CSE (AI & ML) Department at Vidyavardhaka College of Engineering, Mysore."
+version = "1.0.0"
+id = "artifacts/hacktober-fest"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22327
+
+[services.development]
+run = "pnpm --filter @workspace/hacktober-fest run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hacktober-fest", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/hacktober-fest/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22327"
+BASE_PATH = "/"
