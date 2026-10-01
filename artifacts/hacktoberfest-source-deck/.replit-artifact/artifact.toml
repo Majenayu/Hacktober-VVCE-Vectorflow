@@ -1,0 +1,28 @@
+kind = "slides"
+previewPath = "/hacktoberfest-source-deck/"
+title = "Hacktoberfest Source Deck"
+description = "Imported event presentation provided as a source reference for the Hacktoberfest website."
+version = "1.0.0"
+id = "artifacts/hacktoberfest-source-deck"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/hacktoberfest-source-deck/" ]
+localPort = 24652
+
+[services.development]
+run = "pnpm --filter @workspace/hacktoberfest-source-deck run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hacktoberfest-source-deck", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/hacktoberfest-source-deck/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24652"
+BASE_PATH = "/hacktoberfest-source-deck/"

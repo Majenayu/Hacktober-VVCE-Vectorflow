@@ -6,35 +6,13 @@ import {
   Check,
   ChevronRight,
   ExternalLink,
-  LockKeyhole,
   Phone,
   X,
 } from 'lucide-react';
+import { challengeTracks, eventWideChallenge, type Challenge } from './data/challenge-tracks';
 
 const registrationUrl = 'https://forms.gle/zbao7r77jabpSMSw8';
 const hacktoberfestUrl = 'https://hacktoberfest.com/';
-
-type Challenge = {
-  id: string;
-  track: string;
-  title: string;
-};
-
-const challenges: Challenge[] = [
-  { id: 'track-01-challenge-01', track: 'Track 01', title: 'Challenge 01' },
-  { id: 'track-01-challenge-02', track: 'Track 01', title: 'Challenge 02' },
-  { id: 'track-02-challenge-01', track: 'Track 02', title: 'Challenge 01' },
-  { id: 'track-02-challenge-02', track: 'Track 02', title: 'Challenge 02' },
-];
-
-const unavailableFields = [
-  'Problem statement',
-  'Expected outcome',
-  'Key requirements',
-  'Suggested tools & technologies',
-  'Important constraints',
-  'Prototype / solution type',
-];
 
 const rules = [
   <>Participation is strictly limited to <strong>VVCE students</strong>.</>,
@@ -66,6 +44,16 @@ function App() {
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [selectedChallenge]);
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    const frame = window.requestAnimationFrame(() => {
+      const target = document.getElementById(decodeURIComponent(hash));
+      if (target) window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY);
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   const openChallenge = (challenge: Challenge) => setSelectedChallenge(challenge);
 
@@ -121,7 +109,7 @@ function App() {
                 <p className="date-display">14<span>OCT</span></p>
                 <div className="date-divider" />
                 <p className="date-card-name">Hacktoberfest<br />Hack Day</p>
-              <p className="date-card-host">Hosted by Vector Flow Club<br />Vidyavardhaka College of Engineering (VVCE), Mysore</p>
+              <p className="date-card-host">Hosted by Vector Flow Club<br />Vidyavardhaka College of Engineering (VVCE), Mysore · Sports Complex</p>
               </div>
               <span className="poster-caption">Open-source · AI-assisted · Built together</span>
             </div>
@@ -156,7 +144,7 @@ function App() {
             </div>
             <div className="fact" data-testid="text-event-venue">
               <span className="fact-index">02 / VENUE</span>
-              <div><span className="fact-value">VVCE Sports Complex</span><span className="fact-caption">Mysore</span></div>
+              <div><span className="fact-value">Vidyavardhaka College of Engineering (VVCE)</span><span className="fact-caption">Sports Complex · Mysore</span></div>
             </div>
             <div className="fact" data-testid="text-registration-fee">
               <span className="fact-index">03 / FEE</span>
@@ -212,43 +200,73 @@ function App() {
           <div className="challenge-head">
             <div>
               <p className="section-kicker">Domains &amp; challenges</p>
-              <h2 className="section-title" id="challenges-heading">Four briefs.<br />Coming soon.</h2>
+              <h2 className="section-title" id="challenges-heading">Two tracks.<br />Four partner challenges.</h2>
             </div>
-            <p className="challenge-intro">Explore the structure now; the organizers will share the real challenge resources later. No challenge brief is published yet.</p>
+            <p className="challenge-intro">Choose a direction, review the challenge criteria, and use the official participant resources grouped with each track.</p>
           </div>
           <div className="tracks">
-            {[1, 2].map((trackNumber) => {
-              const trackName = `Track 0${trackNumber}`;
-              const trackChallenges = challenges.filter((challenge) => challenge.track === trackName);
-              return (
-                <article className="track-card" key={trackName} data-testid={`card-${trackName.toLowerCase().replace(' ', '-')}`}>
-                  <div className="track-top">
-                    <div><span className="track-label">{trackName}</span><h3 className="track-title">Challenge track</h3></div>
-                    <span className="forthcoming">Briefs forthcoming</span>
+            {challengeTracks.map((track) => (
+              <article className="track-card" key={track.id} data-testid={`card-${track.id}`}>
+                <div className="track-top">
+                  <span className="track-label">{track.number}</span>
+                  <h3 className="track-title">{track.title}</h3>
+                  <p className="track-domain">{track.domain}</p>
+                </div>
+                <div className="track-content">
+                  <div className="track-focus">
+                    <h4>Track focus</h4>
+                    <p>{track.focus}</p>
                   </div>
-                  <div className="challenge-list">
-                    {trackChallenges.map((challenge) => (
-                      <button
-                        className="challenge-button"
-                        type="button"
-                        key={challenge.id}
-                        onClick={() => openChallenge(challenge)}
-                        aria-haspopup="dialog"
-                        data-testid={`button-open-${challenge.id}`}
-                      >
-                        <span className="challenge-name">
-                          <span>{trackName}</span>{challenge.title}
-                          <span className="locked-preview" aria-hidden="true" />
-                        </span>
-                        <span className="challenge-open" aria-hidden="true"><LockKeyhole size={14} /></span>
-                        <span className="sr-only">Open {trackName}, {challenge.title} details. Details are forthcoming.</span>
-                      </button>
+                  <div className="track-challenges">
+                    <h4>Challenges</h4>
+                    <div className="challenge-list">
+                      {track.challenges.map((challenge) => (
+                        <div className="challenge-entry" key={challenge.id}>
+                          <button
+                            className="challenge-button"
+                            type="button"
+                            onClick={() => openChallenge(challenge)}
+                            aria-haspopup="dialog"
+                            aria-label={`Read challenge criteria for ${challenge.title}`}
+                            data-testid={`button-open-${challenge.id}`}
+                          >
+                            <span className="challenge-name">
+                              <span>{challenge.number}</span>{challenge.title}
+                            </span>
+                            <span className="challenge-open" aria-hidden="true"><ArrowUpRight size={15} /></span>
+                          </button>
+                          <p className="challenge-summary">{challenge.summary}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="track-resources">
+                    <h4>Participant resources</h4>
+                    {track.challenges.map((challenge) => (
+                      <div className="resource-group" key={`${challenge.id}-resources`}>
+                        <h5>{challenge.title}</h5>
+                        <ul className="resource-links">
+                          {challenge.resources.map((resource) => (
+                            <li key={resource.url}>
+                              <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                                {resource.label}<ExternalLink size={12} aria-hidden="true" />
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     ))}
                   </div>
-                </article>
-              );
-            })}
+                </div>
+              </article>
+            ))}
           </div>
+          <aside className="event-wide-challenge" data-testid="event-wide-challenge">
+            <span className="micro-label">Separate Hack Day-wide challenge</span>
+            <h3>{eventWideChallenge.title}</h3>
+            <p>{eventWideChallenge.description}</p>
+            <p className="event-wide-note">{eventWideChallenge.note}</p>
+          </aside>
         </section>
 
         <section className="section-wrap selection-section" id="selection" aria-labelledby="selection-heading">
@@ -315,7 +333,7 @@ function App() {
             </article>
             <article className="step" data-testid="step-event-day">
               <h3>Build at VVCE</h3>
-              <p>Shortlisted teams come together at VVCE Sports Complex, Mysore, on 14 October 2026.</p>
+              <p>Shortlisted teams meet at the Sports Complex, Vidyavardhaka College of Engineering (VVCE), Mysore, on 14 October 2026.</p>
             </article>
           </div>
         </section>
@@ -356,7 +374,7 @@ function App() {
             <article className="timeline-item"><span>BEFORE 10 OCT 2026</span><h3>Apply as a team</h3><p>Submit one internal application for two VVCE students.</p></article>
             <article className="timeline-item"><span>BY 10 OCT 2026</span><h3>Evaluation &amp; shortlist</h3><p>Application review and shortlisting completed.</p></article>
             <article className="timeline-item"><span>BY 10 OCT 2026</span><h3>Selected-team onboarding</h3><p>Shortlisted teams complete onboarding.</p></article>
-            <article className="timeline-item"><span>14 OCT 2026</span><h3>Hack Day at VVCE</h3><p>Meet at VVCE Sports Complex, Mysore.</p></article>
+            <article className="timeline-item"><span>14 OCT 2026</span><h3>Hack Day at VVCE</h3><p>Meet at the Sports Complex, Vidyavardhaka College of Engineering (VVCE), Mysore.</p></article>
           </div>
         </section>
 
@@ -424,7 +442,7 @@ function App() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="challenge-dialog-title"
-            aria-describedby="challenge-dialog-status"
+            aria-describedby="challenge-detail-description"
             data-testid="dialog-challenge-details"
             onKeyDown={(event) => {
               if (event.key === 'Tab') {
@@ -436,18 +454,25 @@ function App() {
             <button className="dialog-close" type="button" onClick={() => setSelectedChallenge(null)} aria-label="Close challenge details" autoFocus data-testid="button-close-challenge">
               <X size={18} aria-hidden="true" />
             </button>
-            <p className="section-kicker">{selectedChallenge.track} · {selectedChallenge.title}</p>
+            <p className="section-kicker">{selectedChallenge.trackTitle} · {selectedChallenge.number}</p>
             <h2 id="challenge-dialog-title">{selectedChallenge.title}</h2>
-            <span className="dialog-unavailable" id="challenge-dialog-status">Challenge details forthcoming</span>
-            <div className="dialog-fields">
-              {unavailableFields.map((field) => (
-                <div className="dialog-field" key={field}>
-                  <strong>{field}</strong>
-                  <span>Not yet available — organizers will share challenge resources later.</span>
-                </div>
-              ))}
+            <p className="challenge-detail-description" id="challenge-detail-description">{selectedChallenge.description}</p>
+            <div className="challenge-judging">
+              <h3>What the judges will look for</h3>
+              <p>{selectedChallenge.judging}</p>
             </div>
-            <p className="sr-only">No challenge content has been supplied yet. No problem statement, requirements, tools, constraints, or expected solution are available.</p>
+            <div className="modal-resources">
+              <h3>Participant resources</h3>
+              <ul className="resource-links">
+                {selectedChallenge.resources.map((resource) => (
+                  <li key={resource.url}>
+                    <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                      {resource.label}<ExternalLink size={13} aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </section>
         </div>
       )}
