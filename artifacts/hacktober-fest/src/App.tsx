@@ -6,6 +6,7 @@ import {
   Check,
   ChevronRight,
   ExternalLink,
+  Menu,
   Phone,
   X,
 } from 'lucide-react';
@@ -47,6 +48,16 @@ const eventContacts: EventContact[] = [
 
 function App() {
   const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [menuOpen]);
 
   useEffect(() => {
     if (!selectedChallenge) return;
@@ -79,12 +90,26 @@ function App() {
             <span>VVCE · Mysore</span>
           </span>
         </a>
-        <nav className="nav-links" aria-label="Main navigation">
-          <a href="#event" data-testid="link-nav-event">Event</a>
-          <a href="#challenges" data-testid="link-nav-challenges">Challenges</a>
-          <a href="#selection" data-testid="link-nav-selection">Selection</a>
-          <a className="nav-register" href={registrationUrl} data-testid="link-nav-register">Register team <ArrowRight size={13} aria-hidden="true" /></a>
+        <nav className={`nav-links${menuOpen ? ' nav-links-open' : ''}`} id="main-navigation" aria-label="Main navigation">
+          <a href="#event" onClick={() => setMenuOpen(false)} data-testid="link-nav-event">Event</a>
+          <a href="#challenges" onClick={() => setMenuOpen(false)} data-testid="link-nav-challenges">Challenges</a>
+          <a href="#selection" onClick={() => setMenuOpen(false)} data-testid="link-nav-selection">Selection</a>
+          <a href="#registration" onClick={() => setMenuOpen(false)} data-testid="link-nav-registration">Registration</a>
+          <a href="#rules" onClick={() => setMenuOpen(false)} data-testid="link-nav-rules">Rules</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)} data-testid="link-nav-contact">Contact</a>
+          <a className="nav-register" href={registrationUrl} onClick={() => setMenuOpen(false)} data-testid="link-nav-register">Register team <ArrowRight size={13} aria-hidden="true" /></a>
         </nav>
+        <button
+          className="nav-menu-toggle"
+          type="button"
+          aria-expanded={menuOpen}
+          aria-controls="main-navigation"
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          onClick={() => setMenuOpen((open) => !open)}
+          data-testid="button-nav-toggle"
+        >
+          {menuOpen ? <X size={19} aria-hidden="true" /> : <Menu size={19} aria-hidden="true" />}
+        </button>
       </header>
 
       <main>
