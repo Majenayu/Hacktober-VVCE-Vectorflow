@@ -41,6 +41,8 @@ const eventContacts: EventContact[] = [
   { id: 'patron', role: 'Patron', name: 'Dr. B. Sadashive Gowda', affiliation: 'Principal, VVCE' },
   { id: 'convener', role: 'Convener', name: 'Dr. Adithya CR', affiliation: 'HOD, CSE (AIML)' },
   { id: 'faculty-coordinator', role: 'Faculty Coordinator', name: 'Dr. Varshitha DN', affiliation: 'Associate Professor, CSE (AIML)' },
+  { id: 'latha-du', role: 'Faculty Coordinator', name: 'Latha DU' },
+  { id: 'prashanth-n', role: 'Faculty Coordinator', name: 'Prashanth N' },
   { id: 'sujan', role: 'Student Coordinator', name: 'Sujan', phone: '80884 25263', tel: '8088425263' },
   { id: 'nagasiri', role: 'Student Coordinator', name: 'Nagasiri', phone: '79759 77430', tel: '7975977430' },
   { id: 'chiranthan', role: 'Student Coordinator', name: 'Chiranthan', phone: '74837 18119', tel: '7483718119' },
