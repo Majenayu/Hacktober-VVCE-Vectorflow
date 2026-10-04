@@ -5,9 +5,12 @@ import {
   ArrowUpRight,
   Check,
   ChevronRight,
+  Cloud,
   ExternalLink,
+  Gift,
   Menu,
   Phone,
+  Sparkles,
   X,
 } from 'lucide-react';
 import { challengeTracks, eventWideChallenge, type Challenge } from './data/challenge-tracks';
@@ -20,6 +23,7 @@ const rules = [
   <>Each team must have <strong>exactly two members</strong>. Inter-branch teams are permitted.</>,
   <>Both teammates must independently register on the official Hacktoberfest website.</>,
   <>Submit <strong>one internal Google Form per team</strong>, completed by one teammate on behalf of both.</>,
+  <>Every person who registers for or participates in the event receives the swag drop. <strong>Shortlisting is not required for swag eligibility.</strong></>,
   <>Registration does not guarantee selection. Organizers shortlist based on submitted profiles, team information, and organizer criteria.</>,
   <>Evaluation considers both teammates' LinkedIn and GitHub profiles, the team description, relevant technical/project experience, and overall suitability.</>,
   <>Shortlisted teams must complete onboarding and follow organizer instructions by <strong>10 October 2026</strong>.</>,
@@ -125,6 +129,7 @@ function App() {
       '.benefit-grid > :first-child',
       '.benefit',
       '.reward-banner',
+      '.swag-drop',
       '.timeline-item',
       '.schedule-heading > *',
       '.day-schedule-item',
@@ -505,6 +510,9 @@ function App() {
               <a className="button button-ghost" href={hacktoberfestUrl} target="_blank" rel="noopener noreferrer" data-testid="link-register-hacktoberfest">
                 Register on Hacktoberfest <ExternalLink size={14} aria-hidden="true" />
               </a>
+              <p className="register-swag-note" data-testid="status-swag-eligibility">
+                <strong>Everyone gets the swag drop.</strong> Registering or participating qualifies; shortlisting is not required.
+              </p>
               <span className="register-warning">Registration is reviewed; submission does not guarantee selection.</span>
             </div>
           </div>
@@ -537,7 +545,7 @@ function App() {
             <div>
               <p className="section-kicker">Recognition &amp; rewards</p>
               <h2 className="section-title" id="rewards-heading">₹30,000<br />prize pool.</h2>
-              <p className="intro-copy">Compete for a ₹30,000 prize pool, plus trophies, Hack Day T-shirts, exclusive swag, and other special prizes for top teams.</p>
+              <p className="intro-copy">Compete for the ₹30,000 prize pool, trophies, and awards for top teams. Separately, everyone who registers or participates receives the swag drop below—shortlisting is not required.</p>
               <div className="prize-total" data-testid="text-prize-pool"><strong>₹30,000</strong><span>total prize<br />pool</span></div>
             </div>
             <div className="benefits" data-testid="list-participant-benefits">
@@ -546,16 +554,52 @@ function App() {
               <div className="benefit"><strong>E-certificate</strong><span>For participants.</span></div>
               <div className="benefit"><strong>Snacks &amp; refreshments</strong><span>Provided during the event.</span></div>
               <div className="benefit"><strong>Trophies &amp; recognition</strong><span>Special recognition for outstanding teams.</span></div>
-              <div className="benefit"><strong>Hack Day T-shirts</strong><span>Exclusive event apparel and swag for top teams.</span></div>
+              <div className="benefit"><strong>Swag drops</strong><span>More participant drops are on the way.</span></div>
               <div className="benefit"><strong>Special prizes</strong><span>Additional prizes for standout solutions.</span></div>
-              <div className="benefit"><strong>Exclusive swag</strong><span>Stickers, event goodies, and more.</span></div>
+              <div className="benefit"><strong>Participant swag drop</strong><span>For every registrant or participant, regardless of shortlisting.</span></div>
             </div>
           </div>
+          <section className="swag-drop" aria-labelledby="swag-drops-heading" data-testid="panel-swag-drop">
+            <div className="swag-drop-heading">
+              <div>
+                <p className="section-kicker">Participant-first perks</p>
+                <h3 className="section-title" id="swag-drops-heading">Swag drops.<br />More to come.</h3>
+              </div>
+              <div className="swag-drop-intro">
+                <p>Drop 01 is live. Every person who registers or participates receives the advertised swag, whether or not their team is shortlisted.</p>
+                <a className="button button-primary" href={registrationUrl} data-testid="link-swag-register">
+                  Register your team <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+            <div className="swag-cards" data-testid="list-swag-drops">
+              <article className="swag-card swag-card-featured" data-testid="card-swag-render-credits">
+                <div className="swag-card-meta"><span>Drop 01 · Live</span><Cloud size={19} aria-hidden="true" /></div>
+                <p className="swag-card-value">₹5,000</p>
+                <h4>Render credits</h4>
+                <p>Our first announced drop. Swag eligibility is open to every registrant and participant—no shortlisting required.</p>
+                <span className="swag-card-status">For every registrant</span>
+              </article>
+              <article className="swag-card swag-card-upcoming" data-testid="card-swag-drop-02">
+                <div className="swag-card-meta"><span>Drop 02</span><Gift size={19} aria-hidden="true" /></div>
+                <p className="swag-card-teaser">Coming soon</p>
+                <h4>Another drop is on the way</h4>
+                <p>We’ll reveal more participant swag as Hacktober gets closer.</p>
+              </article>
+              <article className="swag-card swag-card-upcoming" data-testid="card-swag-drop-03">
+                <div className="swag-card-meta"><span>Drop 03</span><Sparkles size={19} aria-hidden="true" /></div>
+                <p className="swag-card-teaser">Stay tuned</p>
+                <h4>This isn’t the last one</h4>
+                <p>More swag announcements are still to come.</p>
+              </article>
+            </div>
+            <p className="swag-drop-note">Hack Day participation still follows the separate team review and shortlisting process.</p>
+          </section>
           <aside className="reward-banner" data-testid="status-prizes-announcement">
             <div className="reward-copy">
               <span className="micro-label">For top-performing teams</span>
               <h3>Make it. Show it. Be remembered.</h3>
-              <p>The ₹30,000 prize pool includes awards for leading teams, with trophies, Hack Day T-shirts, exclusive swag, and other special prizes. Final prize distribution will be announced by the organizers.</p>
+              <p>The ₹30,000 prize pool and trophies recognize standout solutions. The separate participant swag drops above are for everyone who registers or participates, without shortlisting.</p>
             </div>
             <div className="prize-placeholder"><strong>₹30,000</strong><span>Total prize<br />pool</span></div>
           </aside>

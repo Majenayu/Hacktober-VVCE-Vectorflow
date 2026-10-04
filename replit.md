@@ -1,15 +1,13 @@
-# [Project name]
+# Hacktober Fest
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Static event website for Hacktoberfest Hack Day Mysore, hosted by the CSE (AI & ML) Department at Vidyavardhaka College of Engineering.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- The website is the root artifact (`/`) and runs in the managed workflow `artifacts/hacktober-fest: web`.
+- To run it manually: `pnpm install --frozen-lockfile`, then `pnpm --filter @workspace/hacktober-fest run dev`.
+- `pnpm --filter @workspace/hacktober-fest run typecheck` — typecheck the website.
+- The static website does not require a database, API key, or paid AI service. The separate API server is not needed to run it.
 
 ## Stack
 
