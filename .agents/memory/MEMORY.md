@@ -1,0 +1,1 @@
+- [Reward presentation](reward-presentation.md) — keep reward drops as text-first cards matching Render; Arduino is Drop 02 and DigitalOcean is Drop 03.
