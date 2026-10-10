@@ -12,7 +12,7 @@ import {
   Phone,
   X,
 } from 'lucide-react';
-import { challengeTracks, eventWideChallenge, type Challenge } from './data/challenge-tracks';
+import { challengeTracks, type Challenge } from './data/challenge-tracks';
 
 const registrationUrl = 'https://forms.gle/zbao7r77jabpSMSw8';
 const hacktoberfestUrl = 'https://hacktoberfest.com/';
@@ -121,7 +121,6 @@ function App() {
       '.hacktober-copy',
       '.challenge-head > *',
       '.track-card',
-      '.event-wide-challenge',
       '.selection-grid > :first-child',
       '.round',
       '.register-side',
@@ -457,12 +456,6 @@ function App() {
               </article>
             ))}
           </div>
-          <aside className="event-wide-challenge" data-testid="event-wide-challenge">
-            <span className="micro-label">Separate Hack Day-wide challenge</span>
-            <h3>{eventWideChallenge.title}</h3>
-            <p>{eventWideChallenge.description}</p>
-            <p className="event-wide-note">{eventWideChallenge.note}</p>
-          </aside>
         </section>
 
         <section className="section-wrap selection-section" id="selection" aria-labelledby="selection-heading">

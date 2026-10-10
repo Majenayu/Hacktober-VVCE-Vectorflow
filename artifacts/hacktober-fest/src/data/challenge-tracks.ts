@@ -136,10 +136,3 @@ export const challengeTracks: ChallengeTrack[] = [
     ],
   },
 ];
-
-export const eventWideChallenge = {
-  title: 'Best Open-Source AI Project',
-  description:
-    'The host handbook lists this as a separate challenge that runs at every Hack Day, apart from the four partner challenges above.',
-  note: 'Check the event onboarding materials for the local brief, submission details, and judging guidance.',
-};

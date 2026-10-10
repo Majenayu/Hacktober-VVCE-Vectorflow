@@ -189,11 +189,6 @@
 .resource-links a { min-height:38px; display:flex; align-items:center; justify-content:space-between; gap:8px; padding:8px 9px; color:#e8d7bb; background:rgba(255,244,219,.045); border:1px solid rgba(255,244,219,.13); font-size:10px; line-height:1.4; text-decoration:none; overflow-wrap:anywhere; }
 .resource-links a:hover { color:var(--gold); border-color:rgba(239,180,47,.6); }
 .resource-links a svg { flex:none; color:var(--gold); }
-.event-wide-challenge { margin-top:22px; padding:22px 24px; border:1px solid rgba(239,180,47,.5); background:rgba(239,180,47,.07); }
-.event-wide-challenge .micro-label { color:var(--gold); }
-.event-wide-challenge h3 { margin:9px 0 7px; font:700 20px var(--app-font-display); text-transform:uppercase; }
-.event-wide-challenge p { max-width:800px; margin:0; color:#e0d0b6; font-size:12px; line-height:1.65; }
-.event-wide-challenge .event-wide-note { margin-top:7px; color:#cdbb9c; font-size:11px; }
 .selection-section { background:var(--paper-shade); }
 .selection-grid { display:grid; grid-template-columns:.82fr 1.18fr; gap:8vw; align-items:start; }
 .selection-intro { max-width:400px; color:#674e37; font-size:14px; line-height:1.75; }
@@ -399,7 +394,6 @@
   .track-top { padding:17px; }
   .track-content { padding:18px 17px 20px; gap:20px; }
   .resource-links { grid-template-columns:1fr; }
-  .event-wide-challenge { padding:18px; }
  .selection-section { padding-top:64px; }
  .round { grid-template-columns:44px 1fr; gap:10px; }
  .round h3 { font-size:17px; }
