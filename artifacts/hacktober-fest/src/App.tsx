@@ -18,14 +18,15 @@ const registrationUrl = 'https://forms.gle/zbao7r77jabpSMSw8';
 const hacktoberfestUrl = 'https://hacktoberfest.com/';
 
 const rules = [
-  <>Participation is strictly limited to <strong>VVCE students</strong>.</>,
-  <>Each team must have <strong>exactly two members</strong>. Inter-branch teams are permitted.</>,
+  <>The event is open to students from <strong>all colleges</strong>.</>,
+  <>Each team must have <strong>exactly two students</strong>. Inter-branch teams are permitted.</>,
   <>Both teammates must independently register on the official Hacktoberfest website.</>,
   <>Submit <strong>one internal Google Form per team</strong>, completed by one teammate on behalf of both.</>,
   <>Every registrant or participant is eligible for the participant-wide Render credits. <strong>DigitalOcean credits are for shortlisted participants, and Arduino boards are for the eight best teams.</strong></>,
   <>Registration does not guarantee selection. Organizers shortlist based on submitted profiles, team information, and organizer criteria.</>,
   <>Evaluation considers both teammates' LinkedIn and GitHub profiles, the team description, relevant technical/project experience, and overall suitability.</>,
-  <>Shortlisted teams must complete onboarding and follow organizer instructions by <strong>10 October 2026</strong>.</>,
+  <>Registration closes on <strong>20 October 2026</strong>. Shortlist results will be announced on <strong>24 October 2026</strong>; selected teams will receive onboarding instructions after shortlisting.</>,
+  <>The Hack Day is on <strong>27 October 2026</strong>. The venue is <strong>to be announced</strong>.</>,
   <>The participation fee is collected only after shortlisting; applicants do not pay when they submit their initial registration.</>,
   <>Plagiarism, false details, impersonation, or other rule violations may result in disqualification.</>,
   <>Organizers may change procedures, challenges, schedule, or rules when needed; important changes will be communicated.</>,
@@ -243,7 +244,7 @@ function App() {
           <img src="/images/vvce-emblem.png" alt="Vidyavardhaka College of Engineering emblem" />
           <span className="brand-name">
             Vector Flow Club
-            <span>VVCE · Mysore</span>
+            <span>Open to all colleges</span>
           </span>
         </a>
         <nav className={`nav-links${menuOpen ? ' nav-links-open' : ''}`} id="main-navigation" aria-label="Main navigation">
@@ -272,19 +273,19 @@ function App() {
       <main>
         <section className="hero" id="home" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="eyebrow hero-kicker">Global-Level Hacktoberfest Hackathon · VVCE Campus Edition · Mysore</p>
+            <p className="eyebrow hero-kicker">Global-Level Hacktoberfest Hackathon · Hosted by VVCE Vector Flow Club</p>
             <h1 id="hero-title">
               Hacktober<span className="fest">fest.</span>
             </h1>
-            <p className="hero-title-long" data-testid="text-event-name">Hacktoberfest Hack Day Mysore × Vector Flow Club</p>
+            <p className="hero-title-long" data-testid="text-event-name">Hacktoberfest Hack Day × Vector Flow Club</p>
             <p className="hero-tagline">
-              Take part in a global-level Hacktoberfest hackathon at VVCE Mysore. Build in a team of two, collaborate with AI thoughtfully, and make something useful in one focused day.
+              Open to students from all colleges. Build in a team of two, collaborate with AI thoughtfully, and make something useful in one focused day. Event venue to be announced.
             </p>
             <div className="hero-badges">
-              <span className="hero-badge" data-testid="status-eligibility">VVCE students only</span>
+              <span className="hero-badge" data-testid="status-eligibility">Open to all colleges</span>
               <span className="hero-badge" data-testid="text-team-size">Exactly 2 per team</span>
               <span className="hero-badge">Two registrations required</span>
-              <span className="hero-badge" data-testid="text-event-date">14 October 2026</span>
+              <span className="hero-badge" data-testid="text-event-date">27 October 2026</span>
             </div>
             <div className="hero-actions">
               <a className="button button-primary" href={registrationUrl} data-testid="link-register-hero">
@@ -296,15 +297,15 @@ function App() {
             </div>
           </div>
           <div className="hero-art" aria-label="Event date and team details">
-            <div className="event-stamp">VVCE<br />only<br />Mysore</div>
+            <div className="event-stamp">All<br />colleges<br />welcome</div>
             <div className="poster-frame">
               <span className="poster-label">The build day</span>
               <div className="hero-date-card">
-                <p className="micro-label">Save the date · Mysore</p>
-                <p className="date-display">14<span>OCT</span></p>
+                <p className="micro-label">Save the date · Venue TBA</p>
+                <p className="date-display">27<span>OCT</span></p>
                 <div className="date-divider" />
                 <p className="date-card-name">Hacktoberfest<br />Hack Day</p>
-              <p className="date-card-host">Hosted by Vector Flow Club<br />Vidyavardhaka College of Engineering (VVCE), Mysore · Sports Complex</p>
+                <p className="date-card-host">Hosted by Vector Flow Club<br />Vidyavardhaka College of Engineering (VVCE) · Venue to be announced</p>
               </div>
               <span className="poster-caption">Open-source · AI-assisted · Built together</span>
             </div>
@@ -329,30 +330,30 @@ function App() {
               <h2 className="section-title" id="event-heading">One day.<br />Two minds.<br />A real build.</h2>
             </div>
             <p className="intro-copy">
-              <strong>Hacktoberfest Hack Day Mysore × Vector Flow Club</strong> brings a global-level Hacktoberfest hackathon experience to VVCE Mysore. This in-person campus edition is open to VVCE students, who compete in teams to solve practical problems and demonstrate what they can build with open-source tools and thoughtful AI assistance. Teams are reviewed and shortlisted before the event.
+              <strong>Hacktoberfest Hack Day × Vector Flow Club</strong> is hosted by the CSE (AI &amp; ML) Department at Vidyavardhaka College of Engineering and is open to students from all colleges. Teams compete to solve practical problems and demonstrate what they can build with open-source tools and thoughtful AI assistance. The event venue will be announced later, and teams are shortlisted before the Hack Day.
             </p>
           </div>
           <div className="fact-ribbon" aria-label="Key event information">
             <div className="fact" data-testid="text-event-date-detail">
               <span className="fact-index">01 / DATE</span>
-              <div><span className="fact-value">14 October 2026</span><span className="fact-caption">Event day</span></div>
+              <div><span className="fact-value">27 October 2026</span><span className="fact-caption">Event day</span></div>
             </div>
             <div className="fact" data-testid="text-event-venue">
               <span className="fact-index">02 / VENUE</span>
-              <div><span className="fact-value">VVCE Sports Complex</span><span className="fact-caption">Vidyavardhaka College of Engineering · Mysore</span></div>
+              <div><span className="fact-value">To be announced</span><span className="fact-caption">Venue details will be shared later</span></div>
             </div>
             <div className="fact" data-testid="text-event-selection">
               <span className="fact-index">03 / SELECTION</span>
-              <div><span className="fact-value">Shortlist first</span><span className="fact-caption">Teams are confirmed before the event</span></div>
+              <div><span className="fact-value">24 October 2026</span><span className="fact-caption">Shortlist results announced</span></div>
             </div>
             <div className="fact" data-testid="text-team-eligibility">
               <span className="fact-index">04 / TEAM</span>
-              <div><span className="fact-value">2 VVCE students</span><span className="fact-caption">Inter-branch teams allowed</span></div>
+              <div><span className="fact-value">2 students</span><span className="fact-caption">Open to students from all colleges</span></div>
             </div>
           </div>
           <div className="eligibility-note" data-testid="status-selection-not-guaranteed">
             <Check size={17} aria-hidden="true" />
-            <span><strong>Selection is not automatic.</strong> Registration, evaluation, shortlisting, and selected-team onboarding are all completed by 10 October 2026. Applying does not guarantee selection.</span>
+            <span><strong>Selection is not automatic.</strong> Register by 20 October; shortlist results are announced on 24 October. Selected teams will receive onboarding instructions after shortlisting. Applying does not guarantee selection.</span>
           </div>
         </section>
 
@@ -368,7 +369,7 @@ function App() {
               </p>
               <div className="about-aside">
                 <span className="big-number">02</span>
-                <p><strong>Exactly two students per team.</strong> Build your pair from any branches at VVCE. Selection happens before event day; shortlisted teams receive confirmation and onboarding instructions.</p>
+                <p><strong>Exactly two students per team.</strong> Students from all colleges are welcome, and inter-branch teams are allowed. Shortlisted teams receive confirmation and onboarding instructions.</p>
               </div>
             </div>
           </div>
@@ -379,9 +380,9 @@ function App() {
             <span>Hacktoberfest<small>Official platform registration required</small></span>
           </div>
           <div className="hacktober-copy">
-            <p className="section-kicker">Global-level hackathon · VVCE campus edition</p>
+            <p className="section-kicker">Global-level hackathon · Open to all colleges</p>
             <h2 className="section-title" id="hacktober-heading">Your team signs up here.<br />Each builder signs up there.</h2>
-            <p>Hacktoberfest is a global open-source event with participants around the world. The VVCE Campus Edition brings that global-level hackathon experience to Mysore; this in-person competition is limited to VVCE students. Each teammate must independently register on the official Hacktoberfest website, in addition to one internal Google Form per team.</p>
+            <p>Hacktoberfest is a global open-source event with participants around the world. This Hack Day is hosted by VVCE's CSE (AI &amp; ML) Department and Vector Flow Club, and is open to students from all colleges. The event venue will be announced later. Each teammate must independently register on the official Hacktoberfest website, in addition to one internal Google Form per team.</p>
             <div className="required-callout" data-testid="status-two-registrations">
               <strong>Internal team registration alone is not enough.</strong> One teammate submits one internal form for the team; both members complete their own Hacktoberfest registration.
             </div>
@@ -480,15 +481,15 @@ function App() {
                   <div className="criteria-list">
                     <span>Both LinkedIn profiles</span><span>Both GitHub profiles</span><span>Team description</span><span>Relevant experience</span><span>Overall suitability</span>
                   </div>
-                  <span className="deadline-tag">Evaluation complete by 10 October 2026</span>
+                   <span className="deadline-tag">Registration closes 20 October 2026</span>
                 </div>
               </article>
               <article className="round">
                 <span className="round-num">ROUND 02</span>
                 <div>
                   <h3>Shortlisting &amp; onboarding</h3>
-                  <p>Shortlisted teams receive confirmation and onboarding instructions. Selected teams must complete onboarding on time to prepare for the in-person event.</p>
-                  <span className="deadline-tag">Confirmation &amp; onboarding by 10 October 2026</span>
+                  <p>Shortlist results are announced on 24 October. Selected teams receive confirmation and onboarding instructions after results are announced.</p>
+                  <span className="deadline-tag">Shortlist results · 24 October 2026</span>
                 </div>
               </article>
             </div>
@@ -500,9 +501,9 @@ function App() {
             <p className="section-kicker">Registration, step by step</p>
             <h2 className="section-title" id="registration-heading">Do this<br />as a team.</h2>
             <div className="register-panel">
-              <span className="micro-label">Two required registrations · one internal form per team</span>
+              <span className="micro-label">Register by 20 October · two required registrations · one internal form per team</span>
               <h3>Register your team</h3>
-              <p>One teammate submits the event form for both people. Then each teammate registers separately on the official Hacktoberfest website.</p>
+              <p>One teammate submits the event form for both people by 20 October 2026. Then each teammate registers separately on the official Hacktoberfest website.</p>
               <a className="button button-primary" href={registrationUrl} data-testid="link-register-now">
                 Register Team Form <ArrowUpRight size={15} aria-hidden="true" />
               </a>
@@ -530,11 +531,11 @@ function App() {
             </article>
             <article className="step" data-testid="step-shortlisting">
               <h3>Shortlist &amp; onboard</h3>
-              <p>Only shortlisted teams receive confirmation and onboarding instructions. After shortlisting, the <strong>₹200 fee is payable per team</strong>, not per person. Complete onboarding by 10 October 2026.</p>
+              <p>Shortlist results are announced on 24 October 2026. Shortlisted teams receive onboarding instructions; the <strong>₹200 fee is payable per team</strong>, not per person, after shortlisting.</p>
             </article>
             <article className="step" data-testid="step-event-day">
-              <h3>Build at VVCE</h3>
-              <p>Shortlisted teams meet at the Sports Complex, Vidyavardhaka College of Engineering (VVCE), Mysore, on 14 October 2026.</p>
+              <h3>Hack Day · 27 October</h3>
+              <p>The event is on 27 October 2026. The venue will be announced later.</p>
             </article>
           </div>
         </section>
@@ -610,22 +611,22 @@ function App() {
           <p className="section-kicker">Important timeline</p>
           <h2 className="section-title" id="timeline-heading">Before the build,<br />there's a shortlist.</h2>
           <div className="timeline-track" data-testid="list-event-timeline">
-            <article className="timeline-item"><span>BEFORE 10 OCT 2026</span><h3>Apply as a team</h3><p>Submit one internal application for two VVCE students.</p></article>
-            <article className="timeline-item"><span>BY 10 OCT 2026</span><h3>Evaluation &amp; shortlist</h3><p>Application review and shortlisting completed.</p></article>
-            <article className="timeline-item"><span>BY 10 OCT 2026</span><h3>Selected-team onboarding</h3><p>Shortlisted teams complete onboarding.</p></article>
-            <article className="timeline-item"><span>14 OCT 2026</span><h3>Hack Day at VVCE</h3><p>Meet at the Sports Complex, Vidyavardhaka College of Engineering (VVCE), Mysore.</p></article>
+            <article className="timeline-item"><span>20 OCTOBER 2026</span><h3>Registration closes</h3><p>Submit one application for your team of two. Students from all colleges can apply.</p></article>
+            <article className="timeline-item"><span>24 OCTOBER 2026</span><h3>Shortlist results</h3><p>Organizers notify the teams selected to participate.</p></article>
+            <article className="timeline-item"><span>AFTER SHORTLISTING</span><h3>Selected-team onboarding</h3><p>Shortlisted teams receive onboarding instructions and fee details.</p></article>
+            <article className="timeline-item"><span>27 OCTOBER 2026</span><h3>Hack Day</h3><p>Event venue to be announced.</p></article>
           </div>
         </section>
 
         <section className="section-wrap day-schedule-section" id="schedule" aria-labelledby="day-schedule-heading">
           <div className="schedule-heading">
             <div>
-              <p className="section-kicker">Hack Day · 14 October 2026</p>
+              <p className="section-kicker">Hack Day · 27 October 2026</p>
               <h2 className="section-title" id="day-schedule-heading">The day,<br />hour by hour.</h2>
             </div>
             <p className="schedule-intro">
-              <strong>VVCE Sports Complex</strong><br />
-              Vidyavardhaka College of Engineering · Mysore
+              <strong>Venue to be announced</strong><br />
+              Details will be shared with shortlisted teams
             </p>
           </div>
           <ol className="day-schedule-list" data-testid="list-final-day-schedule">
@@ -699,7 +700,7 @@ function App() {
       <footer className="footer">
         <div className="footer-brand">
           <img src="/images/vvce-emblem.png" alt="VVCE emblem" />
-          <div><strong>Hacktoberfest Hack Day Mysore</strong><span>× Vector Flow Club · VVCE · 14 October 2026</span></div>
+          <div><strong>Hacktoberfest Hack Day</strong><span>× Vector Flow Club · VVCE · 27 October 2026</span></div>
         </div>
         <nav className="footer-nav" aria-label="Footer navigation">
           <a href="#challenges" data-testid="link-footer-challenges">Challenges</a>
